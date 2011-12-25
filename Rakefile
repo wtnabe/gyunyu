@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- mode: ruby; encoding: utf-8 -*-
 
 require 'rubygems'
 require 'bundler'
@@ -40,3 +40,7 @@ task :default => :spec
 
 require 'yard'
 YARD::Rake::YardocTask.new
+
+Dir.glob('tasks/**/*.rake') { |f|
+  load File.join(File.dirname(__FILE__), f)
+}

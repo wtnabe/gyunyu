@@ -14,6 +14,11 @@ doc
 # jeweler generated
 pkg
 
+# hand-made
+Gemfile.lock
+vendor
+tmp/.token
+
 # Have editor/IDE/OS specific files you need to ignore? Consider using a global gitignore: 
 #
 # * Create a file at ~/.gitignore
