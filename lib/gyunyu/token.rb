@@ -74,7 +74,7 @@ module Gyunyu
 
     def request
       frob = RTM::Auth::GetFrob.new.invoke
-      url  = RTM::API.get_auth_url('delete', frob)
+      url  = RTM::API.get_auth_url('read', frob)
       puts "open RTM with browser and accept API KEY."
       puts "and hit enter."
       system("open '#{url}'")
