@@ -44,5 +44,32 @@ describe Gyunyu::Command::Export::Option do
         }
       end
     end
+
+    describe 'filter' do
+      context 'no filter' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w() ).filter
+        }
+        it {
+          should be_nil
+        }
+      end
+      context 'one filter' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -f filter ) ).filter
+        }
+        it {
+          should == 'filter'
+        }
+      end
+      context 'multiple filters' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %W( -f first\ one -f last\ one ) ).filter
+        }
+        it {
+          should == 'last one'
+        }
+      end
+    end
   end
 end
