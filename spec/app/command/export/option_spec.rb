@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-require File.dirname(__FILE__) + '/../spec_helper'
+require File.dirname(__FILE__) + '/../../../spec_helper'
 
-describe Gyunyu::Option do
+describe Gyunyu::Command::Export::Option do
   describe 'parser' do
     subject {
-      Gyunyu::Option.new.parser
+      Gyunyu::Command::Export::Option.new.parser
     }
     it {
       subject.class.should == OptionParser
@@ -13,7 +13,7 @@ describe Gyunyu::Option do
     describe 'lists' do
       context 'no lists' do
         subject {
-          Gyunyu::Option.new.lists
+          Gyunyu::Command::Export::Option.new.lists
         }
         it {
           should == []
@@ -21,7 +21,7 @@ describe Gyunyu::Option do
       end
       context 'one list' do
         subject {
-          Gyunyu::Option.new( %w( -l 仕事 ) ).lists
+          Gyunyu::Command::Export::Option.new( %w( -l 仕事 ) ).lists
         }
         it {
           should == %w( 仕事 )
@@ -29,7 +29,7 @@ describe Gyunyu::Option do
       end
       context 'two lists' do
         subject {
-          Gyunyu::Option.new( %w( -l 仕事 -l 勉強 ) ).lists
+          Gyunyu::Command::Export::Option.new( %w( -l 仕事 -l 勉強 ) ).lists
         }
         it {
           should == %w( 仕事 勉強 )
@@ -37,7 +37,7 @@ describe Gyunyu::Option do
       end
       context 'twice same list' do
         subject {
-          Gyunyu::Option.new( %w( -l 仕事 -l 仕事 ) ).lists
+          Gyunyu::Command::Export::Option.new( %w( -l 仕事 -l 仕事 ) ).lists
         }
         it {
           should == %w( 仕事 )
