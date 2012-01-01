@@ -71,5 +71,40 @@ describe Gyunyu::Command::Export::Option do
         }
       end
     end
+
+    describe 'fields' do
+      context 'no fields' do
+        subject {
+          Gyunyu::Command::Export::Option.new().fields
+        }
+        it {
+          should == %w( id modified name )
+        }
+      end
+      context 'specified fields' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -d id ) ).fields
+        }
+        it {
+          should == %w( id )
+        }
+      end
+      context 'duplicated fields' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -d id -d name -d id ) ).fields
+        }
+        it {
+          should == %w( id name )
+        }
+      end
+      context 'include #{FIELD_SEP}' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -d id,name,taskseries_id,due ) ).fields
+        }
+        it 'bulk definition' do
+          should == %w( id name taskseries_id due )
+        end
+      end
+    end
   end
 end
