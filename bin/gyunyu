@@ -1,0 +1,11 @@
+#! /usr/bin/env ruby
+
+unless ( ENV['PATH'].split(
+                            File::PATH_SEPARATOR
+                           ).include?( File.dirname( __FILE__ ) ) )
+  $LOAD_PATH.unshift( File.expand_path( "../lib", File.dirname( __FILE__ ) ) )
+end
+
+require 'gyunyu'
+
+Gyunyu::Command.dispatch( 'export' )

@@ -1,8 +1,148 @@
+# -*- coding: utf-8 -*-
+
 module Gyunyu
   module Command
     module Export
       class App
+        TIME_FIELDS = %w( created modified due added completed deleted )
+
+        def initialize
+          @argv  ||= ARGV
+          @token ||= Gyunyu::Token.get
+          @lists ||= RTM::List.alive_all
+
+          _init_option( @argv )
+        end
+        attr_reader :option, :token, :lists
+
+        #
+        # [return] Array
+        #
+        def fields
+          ['list'] + option.fields.map { |f|
+            if f == 'estimate'
+              %w( estimate(d) estimate(h) estimate(m) )
+            else
+              f
+            end
+          }.flatten
+        end
+
+        #
+        # [return] Module
+        #
+        def format_module
+          format = option.format.to_s.capitalize
+          Module.nesting[1].const_get('Format').const_get(format)
+        end
+
+        #
+        # [param] Array argv
+        # [return] Option
+        #
+        def _init_option( argv = nil )
+          @option = Option.new( argv )
+        end
+
         def run
+          if @argv.size > 0
+            export( build_filter )
+          else
+            puts option.parser
+          end
+        end
+
+        #
+        # [param] String filter
+        # [return] String
+        #
+        def build_filter( filter = nil )
+          filters = []
+
+          filters << option.lists.map { |l| "list:#{l}" }.join(' and ') if option.lists.size > 0
+          filters << option.filter if option.filter
+          filters << filter if filter
+
+          '(' + filters.join(') and (') + ')'
+        end
+
+        #
+        # [param] String filter
+        # [return] RTM::Tasks::GetList
+        #
+        def task_list( filter = nil )
+          RTM::Tasks::GetList.new( token,
+                                   nil,
+                                   build_filter( filter ) ).invoke
+        end
+
+        #
+        # [param] String id
+        # [return] RTM::List
+        #
+        def find_list( id )
+          @lists.find { |list|
+            list.id == id
+          }
+        end
+
+        #
+        # [param] String filter
+        # [return] Array
+        #
+        def pickup_fields( filter = nil )
+          tasks = []
+          task_list( filter ).each { |l|
+            list_name = find_list( l['id'] ).name
+            tasks += Gyunyu::Expander.taskseries( l['taskseries'] ).map { |t|
+              record = {'list' => list_name}
+              option.fields.each { |f|
+                val = if TIME_FIELDS.include?( f )
+                        localtime( t[f] )
+                      else
+                        t[f]
+                      end
+                if f == 'estimate'
+                  e = split_estimate( t[f] )
+                  record['estimate(d)'] = e.day
+                  record['estimate(h)'] = e.hour
+                  record['estimate(m)'] = e.min
+                else
+                  record[f] = val
+                end
+              }
+              record
+            }
+          }
+          tasks
+        end
+
+        #
+        # [param] String filter
+        # [return] Object
+        #
+        def export( filter = nil )
+          puts format_module.export( pickup_fields( filter ), fields )
+        end
+
+        #
+        # [param]  String estimate
+        # [return] RtmTime
+        #
+        def split_estimate( estimate )
+          ::RtmTime::Ja.parse(estimate)
+        end
+
+        #
+        # [param]  String
+        # [return] Time
+        #
+        def localtime( time )
+          if time.size > 0
+            Time.parse( time ).localtime
+          else
+            time
+          end
         end
       end
     end

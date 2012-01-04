@@ -1,4 +1,5 @@
 require 'rtmilk'
+require 'rtm-time'
 
 module Gyunyu
 end
