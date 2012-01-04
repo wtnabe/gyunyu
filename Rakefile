@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "gyunyu"
   gem.homepage = "http://github.com/wtnabe/gyunyu"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Simple RTM app for CLI}
+  gem.description = %Q{now available export command}
   gem.email = "wtnabe@gmail.com"
   gem.authors = ["wtnabe"]
   # dependencies defined in Gemfile

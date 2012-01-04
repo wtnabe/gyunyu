@@ -10,7 +10,7 @@ source "http://rubygems.org"
 
 gem 'rtmilk'
 gem 'xml-simple'
-gem 'rtm-time'
+gem 'rtm-time', '>= 0.2.0'
 if RUBY_VERSION < '1.9'
   gem 'fastercsv'
   gem 'json'

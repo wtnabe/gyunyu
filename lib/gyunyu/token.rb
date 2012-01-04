@@ -1,9 +1,11 @@
+require 'fileutils'
+
 module Gyunyu
   class Token
     API_KEY       = '0af285d87a0798cdd4751acfb02fc058'
     SHARED_SECRET = 'f0611feb04a04e1d'
 
-    include FileUtils
+    include ::FileUtils
 
     def initialize
       RTM::API.init( API_KEY, SHARED_SECRET )
