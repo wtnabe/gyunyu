@@ -7,10 +7,26 @@ simple RTM app for CLI made with Ruby
 * Ruby ( tested with Ruby 1.9.2 )
 * read permission of RTM API
 
+== How to use
+
+ $ gem install gyunyu
+ $ gyunyu
+ Usage: gyunyu [options]
+     -l, --list LIST
+     -f, --filter FILTER
+     -d, --field FIELD
+     -o, --format FORMAT
+ $ gyunyu -f 'dueWithin:"1 week"'
+ list,task_id,name,due
+ 家,227119591,可燃ゴミ,2012-01-10 08:00:00 +0900
+ 家,226594887,可燃ゴミ,2012-01-06 08:00:00 +0900
+ 家,226034564,資源回収ゴミ,2012-01-08 00:00:00 +0900
+ ...
+
 == Supported
 
 * store API token ( and reuse )
-* only `export' command. supported formats are CSV, JSON, YAML.
+* only `export' command. supported formats are CSV, JSON, YAML. ( default is CSV )
 
 == Not Supported
 
