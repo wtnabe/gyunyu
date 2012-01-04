@@ -106,5 +106,32 @@ describe Gyunyu::Command::Export::Option do
         end
       end
     end
+
+    describe 'format' do
+      context 'no format' do
+        subject {
+          Gyunyu::Command::Export::Option.new().format
+        }
+        it {
+          should == :csv
+        }
+      end
+      context 'correct format' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -o json ) ).format
+        }
+        it {
+          should == 'json'
+        }
+      end
+      context 'wrong format' do
+        subject {
+          Gyunyu::Command::Export::Option.new( %w( -o atom ) ).format
+        }
+        it {
+          lambda { subject }.should raise_error( Gyunyu::Command::Export::Option::FormatNotFound )
+        }
+      end
+    end
   end
 end

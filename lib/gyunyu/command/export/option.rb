@@ -1,19 +1,23 @@
+# -*- coding: utf-8 -*-
 require 'optparse'
 
 module Gyunyu
   module Command
     module Export
       class Option
+        class FormatNotFound < StandardError; end
+
         FIELD_SEP = ','
 
         def initialize( argv = [] )
           @lists  = []
           @filter = nil
           @fields = []
+          @format = :csv
 
           parser.parse( argv )
         end
-        attr_reader :lists, :filter, :fields
+        attr_reader :lists, :filter, :fields, :format
 
         def fields
           if @fields.size > 0
@@ -38,6 +42,17 @@ module Gyunyu
                 @fields = field.split( FIELD_SEP )
               elsif !@fields.include?( field )
                 @fields << field
+              end
+            }
+            opt.on('-o', '--format FORMAT') { |format|
+              format.downcase!
+              formats = Format.constants.map { |e|
+                e.to_s.downcase
+              }
+              if formats.include?( format )
+                @format = format
+              else
+                raise FormatNotFound
               end
             }
           end
