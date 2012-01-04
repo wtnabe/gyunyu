@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{wtnabe}]
   s.date = %q{2012-01-04}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{now available export command}
   s.email = %q{wtnabe@gmail.com}
   s.executables = [%q{gyunyu}]
   s.extra_rdoc_files = [
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "bin/gyunyu",
+    "gyunyu.gemspec",
     "lib/gyunyu.rb",
     "lib/gyunyu/app.rb",
     "lib/gyunyu/command.rb",
@@ -50,7 +51,7 @@ Gem::Specification.new do |s|
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.6}
-  s.summary = %q{TODO: one-line summary of your gem}
+  s.summary = %q{Simple RTM app for CLI}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -58,7 +59,7 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<rtmilk>, [">= 0"])
       s.add_runtime_dependency(%q<xml-simple>, [">= 0"])
-      s.add_runtime_dependency(%q<rtm-time>, [">= 0"])
+      s.add_runtime_dependency(%q<rtm-time>, [">= 0.2.0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -68,7 +69,7 @@ Gem::Specification.new do |s|
     else
       s.add_dependency(%q<rtmilk>, [">= 0"])
       s.add_dependency(%q<xml-simple>, [">= 0"])
-      s.add_dependency(%q<rtm-time>, [">= 0"])
+      s.add_dependency(%q<rtm-time>, [">= 0.2.0"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -79,7 +80,7 @@ Gem::Specification.new do |s|
   else
     s.add_dependency(%q<rtmilk>, [">= 0"])
     s.add_dependency(%q<xml-simple>, [">= 0"])
-    s.add_dependency(%q<rtm-time>, [">= 0"])
+    s.add_dependency(%q<rtm-time>, [">= 0.2.0"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
