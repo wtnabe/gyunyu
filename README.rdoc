@@ -1,6 +1,22 @@
 = gyunyu
 
-Description goes here.
+simple RTM app for CLI made with Ruby
+
+== Required
+
+* Ruby ( tested with Ruby 1.9.2 )
+* read permission of RTM API
+
+== Supported
+
+* store API token ( and reuse )
+* only `export' command. supported formats are CSV, JSON, YAML.
+
+== Not Supported
+
+* Tags and notes for csv exporting
+* Convert Date to (ISO 8601 + UTC) in search filter. Currently search results are out of alignment.
+* Default filter
 
 == Contributing to gyunyu
  
