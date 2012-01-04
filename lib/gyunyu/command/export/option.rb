@@ -19,7 +19,7 @@ module Gyunyu
           if @fields.size > 0
             @fields
           else
-            %w( id modified name )
+            %w( task_id name due )
           end
         end
 

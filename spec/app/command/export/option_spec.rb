@@ -78,7 +78,7 @@ describe Gyunyu::Command::Export::Option do
           Gyunyu::Command::Export::Option.new().fields
         }
         it {
-          should == %w( id modified name )
+          should == %w( task_id name due )
         }
       end
       context 'specified fields' do
