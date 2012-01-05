@@ -60,10 +60,13 @@ module Gyunyu
           filters = []
 
           filters << option.lists.map { |l| "list:#{l}" }.join(' and ') if option.lists.size > 0
+          filters << Gyunyu::Command::Export::CustomFilter.filter[option.custom_filter] if option.custom_filter
           filters << option.filter if option.filter
           filters << filter if filter
 
-          '(' + filters.join(') and (') + ')'
+          f = '(' + filters.join(') and (') + ')'
+          STDERR.puts f
+          f
         end
 
         #
@@ -73,7 +76,7 @@ module Gyunyu
         def task_list( filter = nil )
           RTM::Tasks::GetList.new( token,
                                    nil,
-                                   build_filter( filter ) ).invoke
+                                   filter ).invoke
         end
 
         #
@@ -92,28 +95,33 @@ module Gyunyu
         #
         def pickup_fields( filter = nil )
           tasks = []
-          task_list( filter ).each { |l|
-            list_name = find_list( l['id'] ).name
-            tasks += Gyunyu::Expander.taskseries( l['taskseries'] ).map { |t|
-              record = {'list' => list_name}
-              option.fields.each { |f|
-                val = if TIME_FIELDS.include?( f )
-                        localtime( t[f] )
-                      else
-                        t[f]
-                      end
-                if f == 'estimate'
-                  e = split_estimate( t[f] )
-                  record['estimate(d)'] = e.day
-                  record['estimate(h)'] = e.hour
-                  record['estimate(m)'] = e.min
-                else
-                  record[f] = val
-                end
+
+          result = task_list( filter )
+          if result.respond_to? :each
+            result.each { |l|
+              list_name = find_list( l['id'] ).name
+              tasks += Gyunyu::Expander.taskseries( l['taskseries'] ).map { |t|
+                record = {'list' => list_name}
+                option.fields.each { |f|
+                  val = if TIME_FIELDS.include?( f )
+                          localtime( t[f] )
+                        else
+                          t[f]
+                        end
+                  if f == 'estimate'
+                    e = split_estimate( t[f] )
+                    record['estimate(d)'] = e.day
+                    record['estimate(h)'] = e.hour
+                    record['estimate(m)'] = e.min
+                  else
+                    record[f] = val
+                  end
+                }
+                record
               }
-              record
             }
-          }
+          end
+
           tasks
         end
 
