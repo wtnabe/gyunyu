@@ -16,10 +16,11 @@ module Gyunyu
           @custom_filter = nil
           @fields        = []
           @format        = :csv
+          @show_filter_list = false
 
           parser.parse( argv )
         end
-        attr_reader :lists, :filter, :custom_filter, :fields, :format
+        attr_reader :lists, :filter, :custom_filter, :fields, :format, :show_filter_list
 
         def fields
           if @fields.size > 0
@@ -46,6 +47,9 @@ module Gyunyu
               else
                 raise CustomFilterNotFound
               end
+            }
+            opt.on('-s', '--custom-filter-list') { |c|
+              @show_filter_list = true
             }
             opt.on('-d', '--field FIELD') { |field|
               if field.include?( FIELD_SEP )

@@ -46,7 +46,11 @@ module Gyunyu
 
         def run
           if @argv.size > 0
-            export( build_filter )
+            if option.show_filter_list
+              puts CustomFilter.filter.keys.sort
+            else
+              export( build_filter )
+            end
           else
             puts option.parser
           end
