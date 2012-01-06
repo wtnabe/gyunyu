@@ -7,9 +7,12 @@ simple RTM app for CLI made with Ruby
 * Ruby ( tested with Ruby 1.9.2 )
 * read permission of RTM API
 
-== How to use
+== Install
 
  $ gem install gyunyu
+
+== How to use
+
  $ gyunyu
  Usage: gyunyu [options]
      -l, --list LIST
@@ -23,6 +26,33 @@ simple RTM app for CLI made with Ruby
  家,226034564,資源回収ゴミ,2012-01-08 00:00:00 +0900
  ...
 
+== Filter Howto
+
+ $ gyunyu -l 仕事 -l 個人
+ # => list:仕事 and list:個人
+
+ $ gyunyu -l 仕事 -f due:today
+ # => list:仕事 and due:today
+
+On 2012-01-05,
+
+ $ gyunyu -l 個人 -c today
+ # => list:個人 and dueAfter:2012-01-04T23:59:59Z and dueBefore:2012-01-05T24:00:00Z
+
+Even if you live in a timezone other than UTC, you get true today's task list !
+
+== Field Howto
+
+ $ gyunyu -d name -d due
+ list,name,due
+ ...
+
+same above
+
+ $ gyunyu -d name,due
+ list,name,due
+ ...
+
 == Supported
 
 * store API token ( and reuse )
@@ -30,7 +60,7 @@ simple RTM app for CLI made with Ruby
 
 == Not Supported
 
-* Tags and notes for csv exporting
+* Tags and notes for csv exporting ( dumped as YAML inline format )
 * Convert Date to (ISO 8601 + UTC) in search filter. Currently search results are out of alignment.
 * Default filter
 
