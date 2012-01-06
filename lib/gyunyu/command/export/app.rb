@@ -33,7 +33,7 @@ module Gyunyu
         #
         def format_module
           format = option.format.to_s.capitalize
-          Module.nesting[1].const_get('Format').const_get(format)
+          Format.const_get(format)
         end
 
         #
@@ -64,7 +64,7 @@ module Gyunyu
           filters = []
 
           filters << option.lists.map { |l| "list:#{l}" }.join(' and ') if option.lists.size > 0
-          filters << Gyunyu::Command::Export::CustomFilter.filter[option.custom_filter] if option.custom_filter
+          filters << CustomFilter.filter[option.custom_filter] if option.custom_filter
           filters << option.filter if option.filter
           filters << filter if filter
 
