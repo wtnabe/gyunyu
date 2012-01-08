@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{wtnabe}]
-  s.date = %q{2012-01-06}
+  s.date = %q{2012-01-08}
   s.description = %q{now available export command}
   s.email = %q{wtnabe@gmail.com}
   s.executables = [%q{gyunyu}]
@@ -39,11 +39,13 @@ Gem::Specification.new do |s|
     "lib/gyunyu/expander.rb",
     "lib/gyunyu/token.rb",
     "spec/app/.gitkeep",
+    "spec/app/command/export/app_spec.rb",
     "spec/app/command/export/custom_filter_spec.rb",
     "spec/app/command/export/option_spec.rb",
     "spec/app/command_spec.rb",
     "spec/app/expander_spec.rb",
     "spec/spec_helper.rb",
+    "spec/support/task_raw_data.rb",
     "spec/token/token_spec.rb",
     "tasks/git.rake",
     "tasks/spec.rake",
