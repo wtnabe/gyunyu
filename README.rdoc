@@ -29,15 +29,15 @@ simple RTM app for CLI made with Ruby
 == Filter Howto
 
  $ gyunyu -l 仕事 -l 個人
- # => list:仕事 and list:個人
+ # => (list:仕事 or list:個人)
 
  $ gyunyu -l 仕事 -f due:today
- # => list:仕事 and due:today
+ # => (list:仕事) and (due:today)
 
 On 2012-01-05,
 
  $ gyunyu -l 個人 -c today
- # => list:個人 and dueAfter:2012-01-04T23:59:59Z and dueBefore:2012-01-05T24:00:00Z
+ # => (list:個人) and (dueAfter:2012-01-04T23:59:59Z and dueBefore:2012-01-05T24:00:00Z)
 
 Even if you live in a timezone other than UTC, you get true today's task list !
 
@@ -57,6 +57,7 @@ same above
 
 * store API token ( and reuse )
 * only `export' command. supported formats are CSV, JSON, YAML. ( default is CSV )
+* custom filter mainly for short hand of localtime
 
 == Not Supported
 

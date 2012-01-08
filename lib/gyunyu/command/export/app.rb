@@ -63,7 +63,7 @@ module Gyunyu
         def build_filter( filter = nil )
           filters = []
 
-          filters << option.lists.map { |l| "list:#{l}" }.join(' and ') if option.lists.size > 0
+          filters << option.lists.map { |l| "list:#{l}" }.join(' or ') if option.lists.size > 0
           filters << CustomFilter.filter[option.custom_filter] if option.custom_filter
           filters << option.filter if option.filter
           filters << filter if filter
