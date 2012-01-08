@@ -49,7 +49,7 @@ module Gyunyu
             if option.show_filter_list
               puts CustomFilter.filter.keys.sort
             else
-              export( build_filter )
+              puts export( build_filter )
             end
           else
             puts option.parser
@@ -134,7 +134,7 @@ module Gyunyu
         # [return] Object
         #
         def export( filter = nil )
-          puts format_module.export( pickup_fields( filter ), fields )
+          format_module.export( pickup_fields( filter ), fields )
         end
 
         #
