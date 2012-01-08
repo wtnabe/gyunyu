@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gyunyu}
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{wtnabe}]
@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
     "spec/app/.gitkeep",
     "spec/app/command/export/app_spec.rb",
     "spec/app/command/export/custom_filter_spec.rb",
+    "spec/app/command/export/format/csv_spec.rb",
     "spec/app/command/export/option_spec.rb",
     "spec/app/command_spec.rb",
     "spec/app/expander_spec.rb",
