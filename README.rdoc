@@ -1,10 +1,10 @@
 = gyunyu
 
-simple RTM app for CLI made with Ruby
+Simple RTM app for CLI made with Ruby
 
 == Required
 
-* Ruby ( tested with Ruby 1.9.2 )
+* Ruby ( tested with CRuby 1.9.2 )
 * read permission of RTM API
 
 == Install
@@ -17,6 +17,8 @@ simple RTM app for CLI made with Ruby
  Usage: gyunyu [options]
      -l, --list LIST
      -f, --filter FILTER
+     -c, --custom-filter FILTER
+     -s, --custom-filter-list
      -d, --field FIELD
      -o, --format FORMAT
  $ gyunyu -f 'dueWithin:"1 week"'
@@ -61,7 +63,6 @@ same above
 
 == Not Supported
 
-* Tags and notes for csv exporting ( dumped as YAML inline format )
 * Convert Date to (ISO 8601 + UTC) in search filter. Currently search results are out of alignment.
 * Default filter
 
