@@ -4,7 +4,7 @@ require File.dirname(__FILE__) + '/../../../../spec_helper'
 describe Gyunyu::Command::Export::Format::Csv do
   csv_formatter = Gyunyu::Command::Export::Format::Csv
 
-  let(:app) { Gyunyu::Command::Export::App.new }
+  let(:app) { app_export }
 
   before {
     stub(app).task_list { task_raw_data }

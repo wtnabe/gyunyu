@@ -2,7 +2,7 @@
 require File.dirname(__FILE__) + '/../../../spec_helper'
 
 describe Gyunyu::Command::Export::App do
-  let(:app) { Gyunyu::Command::Export::App.new }
+  let(:app) { app_export }
 
   describe 'build_filter' do
     subject {
