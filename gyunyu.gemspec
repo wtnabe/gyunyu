@@ -4,15 +4,15 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{gyunyu}
+  s.name = "gyunyu"
   s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{wtnabe}]
-  s.date = %q{2012-01-08}
-  s.description = %q{now available export command}
-  s.email = %q{wtnabe@gmail.com}
-  s.executables = [%q{gyunyu}]
+  s.authors = ["wtnabe"]
+  s.date = "2012-01-09"
+  s.description = "now available export command"
+  s.email = "wtnabe@gmail.com"
+  s.executables = ["gyunyu"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -52,11 +52,11 @@ Gem::Specification.new do |s|
     "tasks/spec.rake",
     "tmp/.gitkeep"
   ]
-  s.homepage = %q{http://github.com/wtnabe/gyunyu}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{Simple RTM app for CLI}
+  s.homepage = "http://github.com/wtnabe/gyunyu"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.15"
+  s.summary = "Simple RTM app for CLI"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
@@ -65,9 +65,9 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rtmilk>, [">= 0"])
       s.add_runtime_dependency(%q<xml-simple>, [">= 0"])
       s.add_runtime_dependency(%q<rtm-time>, [">= 0.2.0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_development_dependency(%q<rspec>, ["> 2"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<rr>, [">= 0"])
@@ -75,9 +75,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rtmilk>, [">= 0"])
       s.add_dependency(%q<xml-simple>, [">= 0"])
       s.add_dependency(%q<rtm-time>, [">= 0.2.0"])
-      s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+      s.add_dependency(%q<rspec>, ["> 2"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
       s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<rr>, [">= 0"])
@@ -86,9 +86,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rtmilk>, [">= 0"])
     s.add_dependency(%q<xml-simple>, [">= 0"])
     s.add_dependency(%q<rtm-time>, [">= 0.2.0"])
-    s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
+    s.add_dependency(%q<rspec>, ["> 2"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
     s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<rr>, [">= 0"])
