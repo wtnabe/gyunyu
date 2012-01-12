@@ -20,6 +20,12 @@ describe Gyunyu::Command do
   describe 'dispatch' do
     context 'correct command' do
       before {
+        Gyunyu::Command::Export::App.class_eval {
+          def _init_lists
+            @lists = []
+          end
+        }
+
         stub.instance_of(Gyunyu::Command::Export::App).run {
           "`export' dispatched"
         }

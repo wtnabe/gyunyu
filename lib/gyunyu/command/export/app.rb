@@ -9,8 +9,8 @@ module Gyunyu
         def initialize
           @argv  ||= ARGV
           @token ||= Gyunyu::Token.get
-          @lists ||= RTM::List.alive_all
 
+          _init_lists
           _init_option( @argv )
         end
         attr_reader :option, :token, :lists
@@ -34,6 +34,13 @@ module Gyunyu
         def format_module
           format = option.format.to_s.capitalize
           Format.const_get(format)
+        end
+
+        #
+        # [return] Array
+        #
+        def _init_lists
+          @lists ||= RTM::List.alive_all
         end
 
         #
