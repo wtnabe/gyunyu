@@ -11,6 +11,7 @@ module Gyunyu
     module Export
       module Format
         module Csv
+          @tags      = []
           @num_tags  = nil
           @num_notes = nil
 
@@ -23,7 +24,9 @@ module Gyunyu
                 tasks.each { |t|
                   csv << fields.map { |f|
                     case f
-                    when 'tags', 'notes'
+                    when 'tags'
+                      t[f] = expand_tags( t[f] )
+                    when 'notes'
                       num = instance_variable_get( "@num_#{f}" )
                       while t[f].size < num
                         t[f] += ['']
@@ -56,9 +59,8 @@ module Gyunyu
                      else
                        []
                      end
-              if !@num_tags or tags.size > @num_tags
-                @num_tags = tags.size
-              end
+              update_tags_field( tags )
+
               t['tags'] = tags.sort
 
               t
@@ -80,6 +82,12 @@ module Gyunyu
               t
             end
 
+            def update_tags_field( tags )
+              @tags = (@tags | tags).sort
+
+              @num_tags = @tags.size
+            end
+
             def expand_fields( fields )
               fields.map { |e|
                 case e
@@ -94,6 +102,12 @@ module Gyunyu
                   e
                 end
               }.flatten
+            end
+
+            def expand_tags( tags )
+              @tags.map { |e|
+                tags.include?(e) ? e : ''
+              }
             end
           end
         end
