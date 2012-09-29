@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "gyunyu"
-  s.version = "0.3.1"
+  s.version = "0.3.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["wtnabe"]
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/gyunyu/command/export/format/json.rb",
     "lib/gyunyu/command/export/format/yaml.rb",
     "lib/gyunyu/command/export/option.rb",
+    "lib/gyunyu/command/export/total_estimate.rb",
     "lib/gyunyu/expander.rb",
     "lib/gyunyu/token.rb",
     "spec/app/.gitkeep",
@@ -43,6 +44,7 @@ Gem::Specification.new do |s|
     "spec/app/command/export/custom_filter_spec.rb",
     "spec/app/command/export/format/csv_spec.rb",
     "spec/app/command/export/option_spec.rb",
+    "spec/app/command/export/total_estimate_spec.rb",
     "spec/app/command_spec.rb",
     "spec/app/expander_spec.rb",
     "spec/spec_helper.rb",
