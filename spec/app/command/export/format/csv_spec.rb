@@ -26,10 +26,10 @@ describe Gyunyu::Command::Export::Format::Csv do
       }
       it {
         should == <<EOD
-list,name,tags,""
-仕事,jsのlintについて,research,writing
-仕事,あの本読む,reading,""
-仕事,この本読む,reading,""
+list,name,tags,"",""
+仕事,jsのlintについて,"",research,writing
+仕事,あの本読む,reading,"",""
+仕事,この本読む,reading,"",""
 EOD
       }
     end
