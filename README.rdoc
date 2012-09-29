@@ -59,6 +59,7 @@ same above
 
 * store API token ( and reuse )
 * only `export' command. supported formats are CSV, JSON, YAML. ( default is CSV )
+  * CSV format supports summing estimate time
 * custom filter mainly for short hand of localtime
 
 == Not Supported
