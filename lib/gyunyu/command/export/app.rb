@@ -5,6 +5,9 @@ module Gyunyu
     module Export
       class App
         TIME_FIELDS = %w( created modified due added completed deleted )
+        ESTIMATE_DAY  = 'estimate(d)'
+        ESTIMATE_HOUR = 'estimate(h)'
+        ESTIMATE_MIN  = 'estimate(m)'
 
         def initialize
           @argv  ||= ARGV
@@ -21,7 +24,7 @@ module Gyunyu
         def fields
           ['list'] + option.fields.map { |f|
             if f == 'estimate'
-              %w( estimate(d) estimate(h) estimate(m) )
+              [ESTIMATE_DAY, ESTIMATE_HOUR, ESTIMATE_MIN]
             else
               f
             end
@@ -121,9 +124,9 @@ module Gyunyu
                         end
                   if f == 'estimate'
                     e = split_estimate( t[f] )
-                    record['estimate(d)'] = e.day
-                    record['estimate(h)'] = e.hour
-                    record['estimate(m)'] = e.min
+                    record[ESTIMATE_DAY]  = e.day
+                    record[ESTIMATE_HOUR] = e.hour
+                    record[ESTIMATE_MIN]  = e.min
                   else
                     record[f] = val
                   end
