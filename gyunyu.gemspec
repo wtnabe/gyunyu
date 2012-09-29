@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "gyunyu"
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["wtnabe"]
-  s.date = "2012-01-09"
+  s.date = "2012-09-29"
   s.description = "now available export command"
   s.email = "wtnabe@gmail.com"
   s.executables = ["gyunyu"]
@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
     "spec/app/command_spec.rb",
     "spec/app/expander_spec.rb",
     "spec/spec_helper.rb",
+    "spec/support/app_export.rb",
     "spec/support/task_raw_data.rb",
     "spec/token/token_spec.rb",
     "tasks/git.rake",
@@ -55,7 +56,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/wtnabe/gyunyu"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.15"
+  s.rubygems_version = "1.8.23"
   s.summary = "Simple RTM app for CLI"
 
   if s.respond_to? :specification_version then
@@ -69,7 +70,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<yard>, [">= 0"])
-      s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
       s.add_development_dependency(%q<rr>, [">= 0"])
     else
       s.add_dependency(%q<rtmilk>, [">= 0"])
@@ -79,7 +80,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<yard>, [">= 0"])
-      s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
       s.add_dependency(%q<rr>, [">= 0"])
     end
   else
@@ -90,7 +91,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<yard>, [">= 0"])
-    s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
     s.add_dependency(%q<rr>, [">= 0"])
   end
 end
