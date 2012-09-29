@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+require File.dirname(__FILE__) + '/../total_estimate'
+
 if RUBY_VERSION < '1.9'
   require 'fastercsv'
 else
@@ -16,7 +18,11 @@ module Gyunyu
           @num_notes = nil
 
           class << self
+            include Export::TotalEstimate
+
             def export( tasks, fields )
+              sum_estimate( tasks, fields )
+
               FasterCSV.generate { |csv|
                 tasks, fields = parse( tasks, fields )
                 csv << fields
@@ -35,6 +41,12 @@ module Gyunyu
                     t[f]
                   }.flatten
                 }
+
+                if @total_estimate
+                  csv << fields.map { |f|
+                    @total_estimate.has_key?(f) ? @total_estimate[f] : ''
+                  }
+                end
               }
             end
 
