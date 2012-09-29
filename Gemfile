@@ -21,6 +21,6 @@ group :development do
   gem "bundler"
   gem "jeweler"
   gem "yard"
-  gem "rcov", ">= 0"
+  gem "simplecov"
   gem 'rr'
 end
