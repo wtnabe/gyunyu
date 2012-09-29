@@ -1,6 +1,8 @@
 require 'rtmilk'
 require 'rtm-time'
 
+Version = open(File.dirname(__FILE__) + '/../VERSION').read
+
 module Gyunyu
 end
 
