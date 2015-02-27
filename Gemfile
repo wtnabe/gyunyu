@@ -8,7 +8,7 @@ source "http://rubygems.org"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 
-gem 'rtmilk'
+gem 'rtmilk', '~> 0.3'
 gem 'xml-simple'
 gem 'rtm-time', '>= 0.2.0'
 if RUBY_VERSION < '1.9'
