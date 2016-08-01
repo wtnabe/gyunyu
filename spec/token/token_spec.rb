@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Gyunyu::Token do
   def stub_magazine
-    stub.instance_of(Gyunyu::Token).magazine {
+    RR.stub.instance_of(Gyunyu::Token).magazine {
       File.dirname(__FILE__) + '/../../tmp/.token'
     }
   end
@@ -59,7 +59,7 @@ describe Gyunyu::Token do
   describe 'magazine' do
     context 'RTMSTAT_TOKEN' do
       before {
-        stub.instance_of(Gyunyu::Token).env {
+        RR.stub.instance_of(Gyunyu::Token).env {
           '/path/to/token'
         }
       }
@@ -74,7 +74,7 @@ describe Gyunyu::Token do
     context 'dot file in home' do
       before {
         @token = Gyunyu::Token.new
-        stub(@token).env { nil }
+        RR.stub(@token).env { nil }
       }
       subject {
         Gyunyu::Token.new.magazine

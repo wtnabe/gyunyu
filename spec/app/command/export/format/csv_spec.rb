@@ -7,8 +7,8 @@ describe Gyunyu::Command::Export::Format::Csv do
   let(:app) { app_export }
 
   before {
-    stub(app).task_list { task_raw_data }
-    stub(app).find_list {
+    RR.stub(app).task_list { task_raw_data }
+    RR.stub(app).find_list {
       list = Struct.new( :name ).new
       list.name ='仕事'
       list

@@ -26,7 +26,7 @@ describe Gyunyu::Command do
           end
         }
 
-        stub.instance_of(Gyunyu::Command::Export::App).run {
+        RR.stub.instance_of(Gyunyu::Command::Export::App).run {
           "`export' dispatched"
         }
       }

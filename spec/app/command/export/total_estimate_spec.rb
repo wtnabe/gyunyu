@@ -43,7 +43,7 @@ describe Gyunyu::Command::Export::TotalEstimate do
         have_estimate_fields?( %w( name due ) )
       }
       it {
-        should be_false
+        should be_falsey
       }
     end
     context 'name, estimate' do
@@ -51,7 +51,7 @@ describe Gyunyu::Command::Export::TotalEstimate do
         have_estimate_fields?(%w{ name estimate(d) estimate(h) estimate(m) })
       }
       it {
-        should be_true
+        should be_truthy
       }
     end
   end
