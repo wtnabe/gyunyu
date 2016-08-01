@@ -10,10 +10,13 @@ source "http://rubygems.org"
 
 gem 'rtmilk', '~> 0.3'
 gem 'xml-simple'
-gem 'rtm-time', '>= 0.2.0'
+gem 'rtm-time', '>= 0.3.0'
 if RUBY_VERSION < '1.9'
   gem 'fastercsv'
   gem 'json'
+end
+if RUBY_VERSION > '2.2'
+  gem 'test-unit'
 end
 
 group :development do
